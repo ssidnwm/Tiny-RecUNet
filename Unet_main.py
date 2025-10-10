@@ -457,11 +457,11 @@ def outline(image, mask, color):
     return image
 
 
+def worker_init(worker_id):
+    np.random.seed(42 + worker_id)
+
 def data_loaders(batch_size, workers, image_size, aug_scale, aug_angle):
     dataset_train, dataset_valid = datasets("./lgg-mri-segmentation/kaggle_3m", image_size, aug_scale, aug_angle)
-
-    def worker_init(worker_id):
-        np.random.seed(42 + worker_id)
 
     loader_train = DataLoader(
         dataset_train,
@@ -575,7 +575,7 @@ def plot_dsc(dsc_dist):
 batch_size = 16
 epochs = 50
 lr = 0.0001
-workers = 2
+workers = 8
 weights = "./"
 image_size = 224
 aug_scale = 0.05
