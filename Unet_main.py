@@ -707,5 +707,5 @@ def train_validate():
             filepath = os.path.join("./", filename)
             imsave(filepath, image)
 
-
-train_validate()
+if __name__ == "__main__":
+    train_validate()   
