@@ -1,6 +1,7 @@
 import os
 import random
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE" # 중복 라이브러리 로드 방지
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0" # 사용할 GPU 번호 설정
 
 from collections import OrderedDict
 import torch
@@ -252,7 +253,7 @@ class Scale(object):
         image = rescale(
             image,
             (scale, scale),
-            multichannel=True,
+            channel_axis=-1, # multichannel=True, scikit-image 0.19.0부터 multichannel 대신 channel_axis 사용
             preserve_range=True,
             mode="constant",
             anti_aliasing=False,
@@ -261,7 +262,7 @@ class Scale(object):
             mask,
             (scale, scale),
             order=0,
-            multichannel=True,
+            channel_axis=-1, #  multichannel=True, scikit-image 0.19.0부터 multichannel 대신 channel_axis 사용
             preserve_range=True,
             mode="constant",
             anti_aliasing=False,
@@ -571,7 +572,6 @@ def plot_dsc(dsc_dist):
     s, (width, height) = canvas.print_to_buffer()
     return np.fromstring(s, np.uint8).reshape((height, width, 4))
 
-
 batch_size = 16
 epochs = 50
 lr = 0.0001
@@ -581,10 +581,10 @@ image_size = 224
 aug_scale = 0.05
 aug_angle = 15
 
-
 def train_validate():
     device = torch.device("cpu" if not torch.cuda.is_available() else "cuda:0")
-    
+    print("using device:", device) 
+
     loader_train, loader_valid = data_loaders(batch_size, workers, image_size, aug_scale, aug_angle)
     loaders = {"train": loader_train, "valid": loader_valid}
     
