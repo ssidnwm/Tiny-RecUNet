@@ -1,4 +1,4 @@
-# Computer-Vision
+# Tiny-RecUnet
 
 ## Brain MRI Segmentation 프로젝트 파이프라인
 ### 1. 프로젝트 구조
