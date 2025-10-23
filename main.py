@@ -13,13 +13,8 @@ import numpy as np
 from tqdm import tqdm
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
-
-from models.unet import UNet
-from dataset import (
-    BrainSegmentationDataset, 
-    transforms, crop_sample, pad_sample, resize_sample, normalize_volume, 
-    Compose, data_loaders
-    )
+import time
+from dataset import data_loaders
 from utils import (
     Tee,
     DiceLoss,
@@ -36,17 +31,16 @@ from models import model_dict
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE" # 중복 라이브러리 로드 방지
 
-
-ModelClass = model_dict[model_name]
-model = ModelClass(in_channels=BrainSegmentationDataset.in_channels, out_channels=BrainSegmentationDataset.out_channels)
-
 def train_validate():
+    start_time = time.time()
     device = torch.device("cpu" if not torch.cuda.is_available() else "cuda:0")
     print("using device:", device) 
 
     loader_train, loader_valid = data_loaders(batch_size, workers, image_size, aug_scale, aug_angle)
     loaders = {"train": loader_train, "valid": loader_valid}
 
+    ModelClass = model_dict[model_name]
+    model = ModelClass(**model_args[model_name])
     model.to(device)
 
     dsc_loss = DiceLoss()
@@ -124,6 +118,7 @@ def train_validate():
                     torch.save(model.state_dict(), os.path.join(weights, f"{model_name}.pt"))
                 loss_valid = []
 
+    os.makedirs(f"./result/{exp_name}", exist_ok=True)
     # Save loss curves after training
     plt.figure()
     plt.plot(train_loss_history, label='Train Loss')
@@ -134,12 +129,12 @@ def train_validate():
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('loss_curve_{}.png'.format(exp_name))
+    plt.savefig(f'./result/{exp_name}/loss_curve.png')
     plt.close()
     
     print("\nBest validation mean DSC: {:4f}\n".format(best_validation_dsc))
     
-    state_dict = torch.load(os.path.join(weights, f"{model_name}.pt"))
+    state_dict = torch.load(os.path.join(weights, f"{model_name}.pt"), weights_only=True)
     model.load_state_dict(state_dict)
     model.eval()
 
@@ -170,9 +165,9 @@ def train_validate():
     dsc_dist = dsc_distribution(volumes)
 
     dsc_dist_plot = plot_dsc(dsc_dist)
-    imsave("./dsc.png", dsc_dist_plot)
+    imsave(f"./result/{exp_name}/dsc.png", dsc_dist_plot)
 
-    print("volumes keys:", list(volumes.keys()))
+    # print("volumes keys:", list(volumes.keys()))
     for p in volumes:
         # p = "kaggle_3m/TCGA_DU_7014_19860618"
         # x shape: (28, 3, 224, 224)
@@ -186,9 +181,13 @@ def train_validate():
             image = outline(image, y_true[s, 0], color=[0, 255, 0])
             p_id = p.split("/")[-1].split("\\")[-1]
             filename = "{}-{}.png".format(p_id, str(s).zfill(2))
-            filepath = os.path.join("./result_img", filename)
+            # 각 실험 별 결과 이미지를 저장할 디렉토리 생성
+            os.makedirs(os.path.join(f"./result/{exp_name}/result_img"), exist_ok=True)
+            filepath = os.path.join(f"./result/{exp_name}/result_img", filename)
             imsave(filepath, image)
-
+    # 시간 측정
+    total_time = time.time() - start_time
+    print(f"Total elapsed time: {total_time:.2f} seconds")
 
 if __name__ == "__main__":
     log_filename = f"{exp_name}.log"

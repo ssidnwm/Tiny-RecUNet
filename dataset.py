@@ -10,10 +10,6 @@ import random
 
 class BrainSegmentationDataset(Dataset):
     """Brain MRI dataset for FLAIR abnormality segmentation"""
-
-    in_channels = 3
-    out_channels = 1
-
     def __init__(
         self,
         images_dir,
@@ -46,6 +42,7 @@ class BrainSegmentationDataset(Dataset):
             ):
                 filepath = os.path.join(dirpath, filename)
                 if "mask" in filename:
+                    # imread: 이미지 파일을 읽어 numpy array로 반환
                     mask_slices.append(imread(filepath, as_gray=True))
                 else:
                     image_slices.append(imread(filepath))
