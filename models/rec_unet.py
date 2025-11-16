@@ -3,6 +3,7 @@ import torch.nn as nn
 import math
 from .resnet_encoder import ResNetEncoder
 from .recursive_module import RecursiveReasoningModule
+import torch.nn.functional as F
 
 class CNNEncoder(ResNetEncoder):
     """Wrapper alias for backward compatibility; now uses local ResNetEncoder."""
@@ -82,21 +83,35 @@ class TinyRecUNet(nn.Module):
         pretrained_backbone: bool = False,
         embed_dim: int = 256,
         #depth: int = 6,
-        recursive_steps: int= 6,
-        num_recursive_layers: int= 2,
+        #recursive_steps: int= 6,
+        #num_recursive_layers: int= 2,
         num_heads: int = 8,
         mlp_ratio: float = 4.0,
         patch_grid=None,               # (gh, gw) over H/16,W/16 feature map; if None, defaults to full grid
         embed_dropout: float = 0.0,    # dropout on embeddings like the paper
         decoder_channels=(256, 128, 64, 16),
         head_channels: int = 512,
+        H_cycles: int = 4, # 외부 루프 (High-level)
+        L_cycles: int = 3, # 내부 루프 (Low-level)
+        L_layers: int = 1, # L-모듈의 내부 깊이
+        H_layers: int = 1, # H-모듈의 내부 깊이
     ):
         super().__init__()
 
         self.encoder = CNNEncoder(name=backbone, pretrained=pretrained_backbone, in_channels=in_channels)
+        # 1. 인코더의 채널 정보를 가져옵니다
+        #    (c16, c8, c4 채널 크기를 self.encoder.channels에서 가져옴)
+        c16, c8, c4 = self.encoder.channels["c16"], self.encoder.channels["c8"], self.encoder.channels["c4"]
 
+        # 2. 기존 f16 프로젝션 (c16 -> embed_dim)
+        self.proj = nn.Conv2d(c16, embed_dim, kernel_size=1)
+        
+        # 3. f8, f4를 위한 새 프로젝션 레이어를 추가합니다 (c8/c4 -> embed_dim)
+        self.proj_f8 = nn.Conv2d(c8, embed_dim, kernel_size=1)
+        self.proj_f4 = nn.Conv2d(c4, embed_dim, kernel_size=1)
+        
+        # --- ⬆️ 수정 완료 ⬆️ ---
         # projection to transformer embed dim
-        self.proj = nn.Conv2d(self.encoder.channels["c16"], embed_dim, kernel_size=1)
         
         # grid-based patch embedding (이하 동일)
         base_grid_h = max(1, img_size // 16)
@@ -128,16 +143,33 @@ class TinyRecUNet(nn.Module):
         # self.transformer = nn.TransformerEncoder(enc_layer, num_layers=depth)
 
         # 2. TRM 재귀 관련 파라미터 저장
-        self.recursive_steps = recursive_steps
+        #self.recursive_steps = recursive_steps
         
         # 3. 재사용할 재귀 모듈(L_level) 정의
-        self.recursive_module = RecursiveReasoningModule(
+        #self.recursive_module = RecursiveReasoningModule(
+        #    embed_dim=embed_dim,
+        #    num_heads=num_heads,
+        #    mlp_ratio=mlp_ratio,
+        #    num_layers=num_recursive_layers # 모듈 내부는 2-layer
+        #)
+        # 2. 이중 루프 파라미터 저장
+        self.H_cycles = H_cycles
+        self.L_cycles = L_cycles
+        # 3. 'L_level'과 'H_level' 모듈을 *별도로* 2개 정의
+        #    (서로 다른 가중치를 가짐)
+        self.L_level = RecursiveReasoningModule(
             embed_dim=embed_dim,
             num_heads=num_heads,
             mlp_ratio=mlp_ratio,
-            num_layers=num_recursive_layers # 모듈 내부는 2-layer
+            num_layers=L_layers  # L_level은 L_layers를 사용
         )
-
+        self.H_level = RecursiveReasoningModule(
+            embed_dim=embed_dim,
+            num_heads=num_heads,
+            mlp_ratio=mlp_ratio,
+            num_layers=H_layers  # H_level은 H_layers를 사용
+        )
+        
         # 4. 재귀 상태(z_H, z_L) 초기값 정의
         #    (1, N, E) 크기의 학습 가능한 파라미터로 생성
         self.H_init = nn.Parameter(torch.zeros(1, N, embed_dim))
@@ -171,8 +203,30 @@ class TinyRecUNet(nn.Module):
 
     def forward(self, x):
         B, _, H, W = x.shape
-        f16, skips = self.encoder(x)
-        z = self.proj(f16)
+        
+        # --- ⬇️ "Skip-Fusion" 로직 (여기부터 교체) ⬇️ ---
+        
+        # 1. 인코더에서 피처맵 추출
+        f16, skips = self.encoder(x) # skips: [f8, f4, f2]
+        f8, f4 = skips[0], skips[1]  # f8 (H/8), f4 (H/4)
+        
+        # 2. 각 피처맵을 동일한 embed_dim으로 프로젝션
+        z_f16 = self.proj(f16) # [B, E, H/16, W/16]
+        z_f8 = self.proj_f8(f8) # [B, E, H/8, W/8]
+        z_f4 = self.proj_f4(f4) # [B, E, H/4, W/4]
+        
+        # 3. f16의 해상도(target_shape)를 기준으로 고해상도 피처맵을 리사이즈
+        target_shape = z_f16.shape[-2:] # (H/16, W/16)
+        
+        # (Average Pooling이 Bilinear Interpolation보다 노이즈가 적어 안정적일 수 있습니다)
+        z_f8_resized = F.adaptive_avg_pool2d(z_f8, target_shape)
+        z_f4_resized = F.adaptive_avg_pool2d(z_f4, target_shape)
+
+        # 4. 모든 피처맵을 융합(Fusion)! (단순 덧셈 사용)
+        z = z_f16 + z_f8_resized + z_f4_resized
+        
+        # --- ⬆️ 여기까지 교체 (이후 로직은 동일) ⬆️ ---
+        
         z = self.patch_embed(z)
         B, E, gh, gw = z.shape
         
@@ -191,32 +245,41 @@ class TinyRecUNet(nn.Module):
 
         # 재귀 루프 실행 (TRM의 H_cycles)
     # 1. (N-1) 스텝은 그래디언트 계산 없이 실행 (TRM 원본 방식)
-        if self.recursive_steps > 1:
+        if self.H_cycles > 1:
             with torch.no_grad():
                 # self.training은 nn.Module의 속성. 
                 # 학습 중일 때만 no_grad 트릭을 사용하고, 평가(eval) 시에는 전체 스텝을 사용
-                train_steps = self.recursive_steps - 1 if self.training else self.recursive_steps
+                train_H_steps = self.H_cycles - 1 if self.training else self.H_cycles
                 
-                for _ in range(train_steps):
-                    z_L = self.recursive_module(
-                        hidden_state=z_L.detach(), # detach()로 이전 기록을 끊어줌
-                        input_injection=(z_H.detach() + input_embeddings)
-                    )
-                    z_H = self.recursive_module(
+                for _h in range(train_H_steps):
+                    
+                    # 1-1. L_cycles 만큼 내부 루프 실행 (self.L_level 사용)
+                    for _l in range(self.L_cycles):
+                        z_L = self.L_level(
+                            hidden_state=z_L.detach(),
+                            input_injection=(z_H.detach() + input_embeddings)
+                        )
+                    # 1-2. H_level 업데이트 (self.H_level 사용)
+                    # L 루프의 최종 결과(z_L)를 H에 주입
+                    z_H = self.H_level( 
                         hidden_state=z_H.detach(),
                         input_injection=z_L.detach()
                     )
 
         # 2. 마지막 1 스텝만 그래디언트 계산 (학습이 실제로 일어나는 부분)
         #    (self.training이 False일 때는 이 부분이 실행되지 않음)
-        if self.training or self.recursive_steps == 1:
-             z_L = self.recursive_module(
-                hidden_state=z_L, 
-                input_injection=(z_H + input_embeddings)
-            )
-             z_H = self.recursive_module(
+        if self.training or self.H_cycles == 1:
+             # 2-1. L_cycles 만큼 내부 루프 실행 (self.L_level 사용)
+            for _l in range(self.L_cycles):
+                z_L = self.L_level(
+                    hidden_state=z_L, 
+                    input_injection=(z_H + input_embeddings)
+                )
+                
+            # 2-2. H_level 업데이트 (self.H_level 사용)
+            z_H = self.H_level(
                 hidden_state=z_H,
-                input_injection=z_L
+                input_injection=z_L # L 루프의 최종 결과(z_L)를 H에 주입
             )
         # 최종 출력은 z_H를 사용
         tokens_out = z_H

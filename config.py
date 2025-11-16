@@ -37,8 +37,14 @@ model_args = {
         "img_size": image_size,
         "embed_dim": 256,
         # "depth" 대신 TRM 파라미터 사용
-        "recursive_steps": 6,      # ⬅️ 'depth' 대신 사용
-        "num_recursive_layers": 2, # ⬅️ 'depth' 대신 사용
+        # recursive_steps 대신 H_cycles 사용
+        #"recursive_steps": 6,      # ⬅️ 'depth' 대신 사용
+        #"num_recursive_layers": 2, # ⬅️ 'depth' 대신 사용
+        # --- (새 이중 루프 파라미터 추가) ---
+        "H_cycles": 4,  # (성능 보면서 튜닝 필요)
+        "L_cycles": 3,  # (튜닝 필요)
+        "L_layers": 1,  # (튜닝 필요)
+        "H_layers": 1,  # (튜닝 필요)
         "num_heads": 8,
         "mlp_ratio": 4.0,
         "backbone": "resnet34",
