@@ -7,5 +7,5 @@ model_dict = {
     "UNet": UNet,
     "SwinUnet": SwinUnet,
     "TransUnet": TransUnet,
-    "tinyrecunet": TinyRecUNet,
+    "TinyRecUNet": TinyRecUNet,
 }

@@ -1,0 +1,12 @@
+{"time":"2025-11-21T12:37:09.3916799+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-21T12:37:09.7367427+09:00","level":"INFO","msg":"stream: created new stream","id":"bimwepma"}
+{"time":"2025-11-21T12:37:09.7368388+09:00","level":"INFO","msg":"handler: started","stream_id":"bimwepma"}
+{"time":"2025-11-21T12:37:09.744822+09:00","level":"INFO","msg":"stream: started","id":"bimwepma"}
+{"time":"2025-11-21T12:37:09.7453301+09:00","level":"INFO","msg":"writer: started","stream_id":"bimwepma"}
+{"time":"2025-11-21T12:37:09.7453301+09:00","level":"INFO","msg":"sender: started","stream_id":"bimwepma"}
+{"time":"2025-11-21T13:29:11.4832118+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-21T13:29:11.7643652+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-21T13:29:11.7711693+09:00","level":"INFO","msg":"stream: closing","id":"bimwepma"}
+{"time":"2025-11-21T13:29:11.7711693+09:00","level":"INFO","msg":"handler: closed","stream_id":"bimwepma"}
+{"time":"2025-11-21T13:29:11.7711693+09:00","level":"INFO","msg":"sender: closed","stream_id":"bimwepma"}
+{"time":"2025-11-21T13:29:11.7711693+09:00","level":"INFO","msg":"stream: closed","id":"bimwepma"}

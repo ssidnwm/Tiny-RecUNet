@@ -1,0 +1,27 @@
+{"time":"2025-11-23T10:24:10.1540779+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-23T10:24:10.4659412+09:00","level":"INFO","msg":"stream: created new stream","id":"1upvnrw1"}
+{"time":"2025-11-23T10:24:10.4659412+09:00","level":"INFO","msg":"handler: started","stream_id":"1upvnrw1"}
+{"time":"2025-11-23T10:24:10.4705926+09:00","level":"INFO","msg":"stream: started","id":"1upvnrw1"}
+{"time":"2025-11-23T10:24:10.4705926+09:00","level":"INFO","msg":"writer: started","stream_id":"1upvnrw1"}
+{"time":"2025-11-23T10:24:10.4705926+09:00","level":"INFO","msg":"sender: started","stream_id":"1upvnrw1"}
+{"time":"2025-11-23T11:02:16.2261193+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:02:26.2818015+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:02:35.7376035+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:02:51.2720969+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:03:15.8591444+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:03:59.1702609+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:05:05.3229671+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:06:09.2702975+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:07:14.9138073+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:08:13.1019936+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-23T11:08:45.265751+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-23T11:09:10.1227782+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/1upvnrw1/file_stream","body":"{\"error\":\"context deadline exceeded\"}"}
+{"time":"2025-11-23T11:09:19.3132339+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-23T11:09:45.0338447+09:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":715}
+{"time":"2025-11-23T11:09:55.2256287+09:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":1}
+{"time":"2025-11-23T11:28:37.2576171+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-23T11:28:37.5120859+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-23T11:28:37.5216214+09:00","level":"INFO","msg":"stream: closing","id":"1upvnrw1"}
+{"time":"2025-11-23T11:28:37.5216214+09:00","level":"INFO","msg":"handler: closed","stream_id":"1upvnrw1"}
+{"time":"2025-11-23T11:28:37.5216214+09:00","level":"INFO","msg":"sender: closed","stream_id":"1upvnrw1"}
+{"time":"2025-11-23T11:28:37.5216214+09:00","level":"INFO","msg":"stream: closed","id":"1upvnrw1"}

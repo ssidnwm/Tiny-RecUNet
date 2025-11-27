@@ -1,0 +1,47 @@
+{
+  "os": "Windows-10-10.0.22631-SP0",
+  "python": "CPython 3.8.19",
+  "startedAt": "2025-11-21T23:29:58.436294Z",
+  "program": "main.py",
+  "codePath": "main.py",
+  "codePathLocal": "main.py",
+  "git": {
+    "remote": "https://github.com/ssidnwm/Tiny-RecUNet.git",
+    "commit": "7811bbcc385f52d750e4cccde859a8970b60b57a"
+  },
+  "email": "22000245@handong.ac.kr",
+  "root": "C:\\Users\\82109\\Desktop\\벼리\\7학기\\ai융합과 응용\\Tiny-RecUnet\\Tiny-RecUNet",
+  "host": "T_lab_01",
+  "executable": "C:\\ProgramData\\anaconda3\\envs\\trm-unet\\python.exe",
+  "cpu_count": 16,
+  "cpu_count_logical": 24,
+  "gpu": "NVIDIA RTX A5000",
+  "gpu_count": 2,
+  "disk": {
+    "/": {
+      "total": "999321694208",
+      "used": "907964956672"
+    }
+  },
+  "memory": {
+    "total": "68497039360"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA RTX A5000",
+      "memoryTotal": "25757220864",
+      "cudaCores": 8192,
+      "architecture": "Ampere",
+      "uuid": "GPU-369ae43e-74e8-e3a8-d15a-f37ccf13aa1b"
+    },
+    {
+      "name": "NVIDIA RTX A5000",
+      "memoryTotal": "25757220864",
+      "cudaCores": 8192,
+      "architecture": "Ampere",
+      "uuid": "GPU-bba941b2-fbe3-6432-7f77-6da7af989b7c"
+    }
+  ],
+  "cudaVersion": "12.6",
+  "writerId": "4c4yo81xp6h7qae589m5a5k7zghpnr4w"
+}

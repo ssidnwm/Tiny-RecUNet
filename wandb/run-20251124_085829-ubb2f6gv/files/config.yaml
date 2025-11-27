@@ -1,0 +1,140 @@
+_wandb:
+    value:
+        cli_version: 0.23.0
+        e:
+            15w1ho1dlswgyw6zn0qbnt193p2lyg7k:
+                codePath: main.py
+                codePathLocal: main.py
+                cpu_count: 16
+                cpu_count_logical: 24
+                cudaVersion: "12.6"
+                disk:
+                    /:
+                        total: "999321694208"
+                        used: "911438974976"
+                email: 22000245@handong.ac.kr
+                executable: C:\ProgramData\anaconda3\envs\trm-unet\python.exe
+                git:
+                    commit: 7811bbcc385f52d750e4cccde859a8970b60b57a
+                    remote: https://github.com/ssidnwm/Tiny-RecUNet.git
+                gpu: NVIDIA RTX A5000
+                gpu_count: 2
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 8192
+                      memoryTotal: "25757220864"
+                      name: NVIDIA RTX A5000
+                      uuid: GPU-369ae43e-74e8-e3a8-d15a-f37ccf13aa1b
+                    - architecture: Ampere
+                      cudaCores: 8192
+                      memoryTotal: "25757220864"
+                      name: NVIDIA RTX A5000
+                      uuid: GPU-bba941b2-fbe3-6432-7f77-6da7af989b7c
+                host: T_lab_01
+                memory:
+                    total: "68497039360"
+                os: Windows-10-10.0.22631-SP0
+                program: main.py
+                python: CPython 3.8.19
+                root: C:\Users\82109\Desktop\벼리\7학기\ai융합과 응용\Tiny-RecUnet\Tiny-RecUNet
+                startedAt: "2025-11-23T23:58:29.423022Z"
+                writerId: 15w1ho1dlswgyw6zn0qbnt193p2lyg7k
+        m:
+            - "1": train_loss
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": epoch
+              "6":
+                - 3
+              "7": []
+            - "1": val_loss
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": val_dsc
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+        python_version: 3.8.19
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 2
+                - 7
+                - 13
+                - 15
+                - 61
+            "4": 3.8.19
+            "5": 0.23.0
+            "8":
+                - 3
+            "12": 0.23.0
+            "13": windows-amd64
+aug_angle:
+    value: 15
+aug_scale:
+    value: 0.05
+batch_size:
+    value: 16
+epochs:
+    value: 50
+image_size:
+    value: 224
+lr:
+    value: 0.0002308983014028014
+model_args:
+    value:
+        H_cycles: 3
+        H_layers: 1
+        L_cycles: 3
+        L_layers: 1
+        backbone: resnet34
+        decoder_channels:
+            - 512
+            - 256
+            - 128
+            - 32
+        embed_dim: 256
+        embed_dropout: 0.03346565207876293
+        head_channels: 512
+        img_size: 224
+        in_channels: 3
+        mlp_ratio: 4
+        num_heads: 8
+        out_channels: 1
+        patch_grid:
+            - 14
+            - 14
+        pretrained_backbone: false
+model_name:
+    value: TinyRecUNet
+overrides:
+    value:
+        H_cycles: 3
+        H_layers: 1
+        L_cycles: 3
+        L_layers: 1
+        batch_size: 16
+        decoder_channels: 512,256,128,32
+        embed_dim: 256
+        embed_dropout: 0.03346565207876293
+        head_channels: 512
+        lr: 0.0002308983014028014
+        num_heads: 8
+        patch_grid: 14,14
+param_count:
+    value: 19046593
+workers:
+    value: 4

@@ -1,0 +1,12 @@
+{"time":"2025-11-20T23:09:32.8843077+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-20T23:09:33.2068897+09:00","level":"INFO","msg":"stream: created new stream","id":"qgsfuvms"}
+{"time":"2025-11-20T23:09:33.2068897+09:00","level":"INFO","msg":"handler: started","stream_id":"qgsfuvms"}
+{"time":"2025-11-20T23:09:33.213079+09:00","level":"INFO","msg":"stream: started","id":"qgsfuvms"}
+{"time":"2025-11-20T23:09:33.213079+09:00","level":"INFO","msg":"sender: started","stream_id":"qgsfuvms"}
+{"time":"2025-11-20T23:09:33.213079+09:00","level":"INFO","msg":"writer: started","stream_id":"qgsfuvms"}
+{"time":"2025-11-21T00:03:42.3970427+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-21T00:03:42.7368988+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-21T00:03:42.7458229+09:00","level":"INFO","msg":"stream: closing","id":"qgsfuvms"}
+{"time":"2025-11-21T00:03:42.7458229+09:00","level":"INFO","msg":"handler: closed","stream_id":"qgsfuvms"}
+{"time":"2025-11-21T00:03:42.7458229+09:00","level":"INFO","msg":"sender: closed","stream_id":"qgsfuvms"}
+{"time":"2025-11-21T00:03:42.7458229+09:00","level":"INFO","msg":"stream: closed","id":"qgsfuvms"}

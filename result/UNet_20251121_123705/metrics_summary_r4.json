@@ -1,0 +1,12 @@
+{
+  "best_validation_dsc": 0.8453833149637854,
+  "final_validation_dsc": 0.8453833149637854,
+  "final_test_dsc": 0.8562086820104942,
+  "epochs": 50,
+  "model_name": "UNet",
+  "run_tag": "_r4",
+  "overrides": {
+    "lr": 0.00015169980582701846,
+    "batch_size": 8
+  }
+}

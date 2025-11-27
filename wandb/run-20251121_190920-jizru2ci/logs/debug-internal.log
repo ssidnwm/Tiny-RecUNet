@@ -1,0 +1,12 @@
+{"time":"2025-11-21T19:09:20.5399555+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-21T19:09:21.0127194+09:00","level":"INFO","msg":"stream: created new stream","id":"jizru2ci"}
+{"time":"2025-11-21T19:09:21.0127194+09:00","level":"INFO","msg":"handler: started","stream_id":"jizru2ci"}
+{"time":"2025-11-21T19:09:21.0189289+09:00","level":"INFO","msg":"stream: started","id":"jizru2ci"}
+{"time":"2025-11-21T19:09:21.0189289+09:00","level":"INFO","msg":"writer: started","stream_id":"jizru2ci"}
+{"time":"2025-11-21T19:09:21.0189289+09:00","level":"INFO","msg":"sender: started","stream_id":"jizru2ci"}
+{"time":"2025-11-21T20:06:25.7525561+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-21T20:06:26.0523619+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-21T20:06:26.057013+09:00","level":"INFO","msg":"stream: closing","id":"jizru2ci"}
+{"time":"2025-11-21T20:06:26.057013+09:00","level":"INFO","msg":"handler: closed","stream_id":"jizru2ci"}
+{"time":"2025-11-21T20:06:26.057013+09:00","level":"INFO","msg":"sender: closed","stream_id":"jizru2ci"}
+{"time":"2025-11-21T20:06:26.057013+09:00","level":"INFO","msg":"stream: closed","id":"jizru2ci"}

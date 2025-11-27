@@ -1,0 +1,13 @@
+{"time":"2025-11-21T10:45:25.3962203+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-21T10:45:25.7124872+09:00","level":"INFO","msg":"stream: created new stream","id":"yvodf2x1"}
+{"time":"2025-11-21T10:45:25.7129904+09:00","level":"INFO","msg":"handler: started","stream_id":"yvodf2x1"}
+{"time":"2025-11-21T10:45:25.7152934+09:00","level":"INFO","msg":"stream: started","id":"yvodf2x1"}
+{"time":"2025-11-21T10:45:25.7152934+09:00","level":"INFO","msg":"writer: started","stream_id":"yvodf2x1"}
+{"time":"2025-11-21T10:45:25.7152934+09:00","level":"INFO","msg":"sender: started","stream_id":"yvodf2x1"}
+{"time":"2025-11-21T11:04:26.8381654+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL/yvodf2x1/file_stream\": read tcp 172.17.120.181:61342->35.186.228.49:443: wsarecv: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond."}
+{"time":"2025-11-21T11:37:55.8521816+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-21T11:37:56.1825106+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-21T11:37:56.1945119+09:00","level":"INFO","msg":"stream: closing","id":"yvodf2x1"}
+{"time":"2025-11-21T11:37:56.1945119+09:00","level":"INFO","msg":"handler: closed","stream_id":"yvodf2x1"}
+{"time":"2025-11-21T11:37:56.1950158+09:00","level":"INFO","msg":"sender: closed","stream_id":"yvodf2x1"}
+{"time":"2025-11-21T11:37:56.1950158+09:00","level":"INFO","msg":"stream: closed","id":"yvodf2x1"}

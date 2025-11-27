@@ -1,0 +1,12 @@
+{"time":"2025-11-24T04:11:25.7565274+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-24T04:11:26.0691703+09:00","level":"INFO","msg":"stream: created new stream","id":"zmukgplt"}
+{"time":"2025-11-24T04:11:26.0691703+09:00","level":"INFO","msg":"handler: started","stream_id":"zmukgplt"}
+{"time":"2025-11-24T04:11:26.070734+09:00","level":"INFO","msg":"stream: started","id":"zmukgplt"}
+{"time":"2025-11-24T04:11:26.070734+09:00","level":"INFO","msg":"writer: started","stream_id":"zmukgplt"}
+{"time":"2025-11-24T04:11:26.070734+09:00","level":"INFO","msg":"sender: started","stream_id":"zmukgplt"}
+{"time":"2025-11-24T05:22:42.0863926+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-24T05:22:42.368454+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-24T05:22:42.3730364+09:00","level":"INFO","msg":"stream: closing","id":"zmukgplt"}
+{"time":"2025-11-24T05:22:42.3730364+09:00","level":"INFO","msg":"handler: closed","stream_id":"zmukgplt"}
+{"time":"2025-11-24T05:22:42.3730364+09:00","level":"INFO","msg":"sender: closed","stream_id":"zmukgplt"}
+{"time":"2025-11-24T05:22:42.3730364+09:00","level":"INFO","msg":"stream: closed","id":"zmukgplt"}

@@ -1,0 +1,12 @@
+{"time":"2025-11-25T15:05:51.7633325+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-25T15:05:52.0769289+09:00","level":"INFO","msg":"stream: created new stream","id":"odnkamxa"}
+{"time":"2025-11-25T15:05:52.0771041+09:00","level":"INFO","msg":"handler: started","stream_id":"odnkamxa"}
+{"time":"2025-11-25T15:05:52.0923229+09:00","level":"INFO","msg":"stream: started","id":"odnkamxa"}
+{"time":"2025-11-25T15:05:52.0923229+09:00","level":"INFO","msg":"sender: started","stream_id":"odnkamxa"}
+{"time":"2025-11-25T15:05:52.0923229+09:00","level":"INFO","msg":"writer: started","stream_id":"odnkamxa"}
+{"time":"2025-11-25T16:04:43.0843466+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-25T16:04:43.3667184+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-25T16:04:43.3713934+09:00","level":"INFO","msg":"stream: closing","id":"odnkamxa"}
+{"time":"2025-11-25T16:04:43.3713934+09:00","level":"INFO","msg":"handler: closed","stream_id":"odnkamxa"}
+{"time":"2025-11-25T16:04:43.3713934+09:00","level":"INFO","msg":"sender: closed","stream_id":"odnkamxa"}
+{"time":"2025-11-25T16:04:43.3713934+09:00","level":"INFO","msg":"stream: closed","id":"odnkamxa"}

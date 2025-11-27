@@ -1,0 +1,19 @@
+{
+  "best_validation_dsc": 0.7786349441146732,
+  "final_validation_dsc": 0.7786349441146732,
+  "final_test_dsc": 0.7275140592703067,
+  "epochs": 50,
+  "model_name": "TransUnet",
+  "run_tag": "_r8",
+  "overrides": {
+    "lr": 2.66227606758698e-05,
+    "batch_size": 16,
+    "embed_dim": 256,
+    "depth": 6,
+    "num_heads": 4,
+    "embed_dropout": 0.07946404994941574,
+    "decoder_channels": "256,128,64,16",
+    "head_channels": 256,
+    "patch_grid": "14,14"
+  }
+}

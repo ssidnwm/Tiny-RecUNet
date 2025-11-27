@@ -1,0 +1,12 @@
+{"time":"2025-11-22T03:32:02.5652868+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-22T03:32:02.8792717+09:00","level":"INFO","msg":"stream: created new stream","id":"ls7ps2iu"}
+{"time":"2025-11-22T03:32:02.8792717+09:00","level":"INFO","msg":"handler: started","stream_id":"ls7ps2iu"}
+{"time":"2025-11-22T03:32:02.8808113+09:00","level":"INFO","msg":"stream: started","id":"ls7ps2iu"}
+{"time":"2025-11-22T03:32:02.8808113+09:00","level":"INFO","msg":"writer: started","stream_id":"ls7ps2iu"}
+{"time":"2025-11-22T03:32:02.8808113+09:00","level":"INFO","msg":"sender: started","stream_id":"ls7ps2iu"}
+{"time":"2025-11-22T04:26:53.5889135+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-22T04:26:53.9199433+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-22T04:26:53.9239287+09:00","level":"INFO","msg":"stream: closing","id":"ls7ps2iu"}
+{"time":"2025-11-22T04:26:53.9239287+09:00","level":"INFO","msg":"handler: closed","stream_id":"ls7ps2iu"}
+{"time":"2025-11-22T04:26:53.9239287+09:00","level":"INFO","msg":"sender: closed","stream_id":"ls7ps2iu"}
+{"time":"2025-11-22T04:26:53.9239287+09:00","level":"INFO","msg":"stream: closed","id":"ls7ps2iu"}

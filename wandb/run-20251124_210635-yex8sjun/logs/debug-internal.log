@@ -1,0 +1,9 @@
+{"time":"2025-11-24T21:06:37.9493978+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-24T21:06:38.2824584+09:00","level":"INFO","msg":"stream: created new stream","id":"yex8sjun"}
+{"time":"2025-11-24T21:06:38.2825706+09:00","level":"INFO","msg":"handler: started","stream_id":"yex8sjun"}
+{"time":"2025-11-24T21:06:38.2847151+09:00","level":"INFO","msg":"stream: started","id":"yex8sjun"}
+{"time":"2025-11-24T21:06:38.2847151+09:00","level":"INFO","msg":"writer: started","stream_id":"yex8sjun"}
+{"time":"2025-11-24T21:06:38.2852302+09:00","level":"INFO","msg":"sender: started","stream_id":"yex8sjun"}
+{"time":"2025-11-24T21:52:24.3865423+09:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/TRMUNet/AICONV_FINAL_20/yex8sjun/file_stream"}
+{"time":"2025-11-24T21:52:24.3865423+09:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/TRMUNet/AICONV_FINAL_20/yex8sjun/file_stream: {\"error\":\"run AICONV_FINAL_20/yex8sjun not found while streaming file\"}"}
+{"time":"2025-11-25T06:50:19.5707237+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}

@@ -1,0 +1,22 @@
+{
+  "best_validation_dsc": 0.8328681990425204,
+  "final_validation_dsc": 0.8328681990425204,
+  "final_test_dsc": 0.830786368531443,
+  "epochs": 50,
+  "model_name": "TinyRecUNet",
+  "run_tag": "_r2",
+  "overrides": {
+    "lr": 4.791825927161033e-05,
+    "batch_size": 4,
+    "embed_dim": 128,
+    "num_heads": 8,
+    "embed_dropout": 0.030663082955954612,
+    "decoder_channels": "512,256,128,32",
+    "head_channels": 512,
+    "patch_grid": "14,14",
+    "H_cycles": 5,
+    "L_cycles": 3,
+    "L_layers": 1,
+    "H_layers": 2
+  }
+}

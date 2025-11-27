@@ -1,0 +1,185 @@
+reading train images...
+preprocessing train volumes...
+cropping train volumes...
+padding train volumes...
+resizing train volumes...
+normalizing train volumes...
+done creating train dataset
+reading validation images...
+preprocessing validation volumes...
+cropping validation volumes...
+padding validation volumes...
+resizing validation volumes...
+normalizing validation volumes...
+done creating validation dataset
+reading test images...
+preprocessing test volumes...
+cropping test volumes...
+padding test volumes...
+resizing test volumes...
+normalizing test volumes...
+done creating test dataset
+[Run _r4] Param count: 17289793
+epoch 2 | loss: 0.3863896114170236
+epoch 2 | val_loss: 0.6560571832933287
+epoch 2 | val_dsc: 0.7013118587552819
+epoch 3 | loss: 0.2467299612268569
+epoch 3 | val_loss: 0.658031247664189
+epoch 3 | val_dsc: 0.7018990273126173
+epoch 4 | loss: 0.20269561050430177
+epoch 4 | val_loss: 0.6434420079424761
+epoch 4 | val_dsc: 0.6869224607786981
+epoch 5 | loss: 0.17497511357857437
+epoch 5 | val_loss: 0.5705235730046812
+epoch 5 | val_dsc: 0.714901941175247
+epoch 6 | loss: 0.15367982974128117
+epoch 6 | val_loss: 0.558547840602156
+epoch 6 | val_dsc: 0.7353218123296167
+epoch 7 | loss: 0.13499813901368904
+epoch 7 | val_loss: 0.41142857852189435
+epoch 7 | val_dsc: 0.8165480949957449
+epoch 8 | loss: 0.13216040137583618
+epoch 8 | val_loss: 0.3541783621345741
+epoch 8 | val_dsc: 0.7635079396189042
+epoch 9 | loss: 0.12569474866465916
+epoch 9 | val_loss: 0.343415675819784
+epoch 9 | val_dsc: 0.7749349760336521
+epoch 10 | loss: 0.120355310184615
+epoch 10 | val_loss: 0.2712545965028846
+epoch 10 | val_dsc: 0.7885424995514054
+epoch 11 | loss: 0.11236859755541281
+epoch 11 | val_loss: 0.28490218304205633
+epoch 11 | val_dsc: 0.7869663898151452
+epoch 12 | loss: 0.11061576292628333
+epoch 12 | val_loss: 0.20857769337253293
+epoch 12 | val_dsc: 0.794855557254764
+epoch 13 | loss: 0.10634219291664306
+epoch 13 | val_loss: 0.2140825727711553
+epoch 13 | val_dsc: 0.818519970446226
+epoch 14 | loss: 0.10144707040181236
+epoch 14 | val_loss: 0.18031057758607727
+epoch 14 | val_dsc: 0.8229596827001264
+epoch 15 | loss: 0.10205880430324998
+epoch 15 | val_loss: 0.23149208400560461
+epoch 15 | val_dsc: 0.8294905679106279
+epoch 16 | loss: 0.09779435112362816
+epoch 16 | val_loss: 0.26834111369174457
+epoch 16 | val_dsc: 0.829459238075545
+epoch 17 | loss: 0.10148727744029312
+epoch 17 | val_loss: 0.23141017340231632
+epoch 17 | val_dsc: 0.836074977414224
+epoch 18 | loss: 0.09618290793643426
+epoch 18 | val_loss: 0.1916017670562302
+epoch 18 | val_dsc: 0.82830712324188
+epoch 19 | loss: 0.09172278729380753
+epoch 19 | val_loss: 0.18236227225566257
+epoch 19 | val_dsc: 0.8089169274141967
+epoch 20 | loss: 0.0901864927124094
+epoch 20 | val_loss: 0.16799201654351276
+epoch 20 | val_dsc: 0.8241872722867312
+epoch 21 | loss: 0.08882761064660612
+epoch 21 | val_loss: 0.13057850582012231
+epoch 21 | val_dsc: 0.8255096414399044
+epoch 22 | loss: 0.08722659314750994
+epoch 22 | val_loss: 0.21779241078141806
+epoch 22 | val_dsc: 0.8169381115179849
+epoch 23 | loss: 0.0852294906421944
+epoch 23 | val_loss: 0.1443886273149131
+epoch 23 | val_dsc: 0.8165006661850537
+epoch 24 | loss: 0.0853984200607532
+epoch 24 | val_loss: 0.17505293479864148
+epoch 24 | val_dsc: 0.8004602791627308
+epoch 25 | loss: 0.08506861739057713
+epoch 25 | val_loss: 0.256238245445749
+epoch 25 | val_dsc: 0.8306291428341629
+epoch 26 | loss: 0.08041236301263173
+epoch 26 | val_loss: 0.26619654375573865
+epoch 26 | val_dsc: 0.8156354024320736
+epoch 27 | loss: 0.07907935204329314
+epoch 27 | val_loss: 0.21002965215323627
+epoch 27 | val_dsc: 0.8200563189656572
+epoch 28 | loss: 0.07801702003630381
+epoch 28 | val_loss: 0.2195701193118441
+epoch 28 | val_dsc: 0.823110198620992
+epoch 29 | loss: 0.08259971991733268
+epoch 29 | val_loss: 0.17798870974692746
+epoch 29 | val_dsc: 0.8363313693129367
+epoch 30 | loss: 0.07859081171807789
+epoch 30 | val_loss: 0.20578088190244592
+epoch 30 | val_dsc: 0.830111603259148
+epoch 31 | loss: 0.07675257963793618
+epoch 31 | val_loss: 0.24873172200244406
+epoch 31 | val_dsc: 0.8224180574575914
+epoch 32 | loss: 0.07709747410955883
+epoch 32 | val_loss: 0.20145883681117624
+epoch 32 | val_dsc: 0.8299370695307369
+epoch 33 | loss: 0.07119146541312889
+epoch 33 | val_loss: 0.22964258211246436
+epoch 33 | val_dsc: 0.8275855085895018
+epoch 34 | loss: 0.07334785281665741
+epoch 34 | val_loss: 0.3654701372851496
+epoch 34 | val_dsc: 0.815326481028074
+epoch 35 | loss: 0.07094206893570208
+epoch 35 | val_loss: 0.2744889449382174
+epoch 35 | val_dsc: 0.8232852509314782
+epoch 36 | loss: 0.07089199062693056
+epoch 36 | val_loss: 0.23647711328838183
+epoch 36 | val_dsc: 0.7883732205519709
+epoch 37 | loss: 0.06778345670964983
+epoch 37 | val_loss: 0.37480157959288446
+epoch 37 | val_dsc: 0.7953876606447667
+epoch 38 | loss: 0.06706832459679356
+epoch 38 | val_loss: 0.2334067199541175
+epoch 38 | val_dsc: 0.8272403686192036
+epoch 39 | loss: 0.06696345282610132
+epoch 39 | val_loss: 0.21601027682207632
+epoch 39 | val_dsc: 0.8161640193853543
+epoch 40 | loss: 0.06386215543305432
+epoch 40 | val_loss: 0.22346756510112598
+epoch 40 | val_dsc: 0.8141466037159578
+epoch 41 | loss: 0.07020532588164012
+epoch 41 | val_loss: 0.23158287310945816
+epoch 41 | val_dsc: 0.7670688595616573
+epoch 42 | loss: 0.06416178743044536
+epoch 42 | val_loss: 0.1525851591773655
+epoch 42 | val_dsc: 0.8305432026348003
+epoch 43 | loss: 0.06141888969159
+epoch 43 | val_loss: 0.16639178041098773
+epoch 43 | val_dsc: 0.8031836025526982
+epoch 44 | loss: 0.05979260313447821
+epoch 44 | val_loss: 0.2558284064997797
+epoch 44 | val_dsc: 0.8035980333554973
+epoch 45 | loss: 0.060455370753530475
+epoch 45 | val_loss: 0.3154801026634548
+epoch 45 | val_dsc: 0.8055970224479754
+epoch 46 | loss: 0.05969918357632147
+epoch 46 | val_loss: 0.30289112053055695
+epoch 46 | val_dsc: 0.8238282627631813
+epoch 47 | loss: 0.06034538039454707
+epoch 47 | val_loss: 0.2666686116785243
+epoch 47 | val_dsc: 0.8207049846845932
+epoch 48 | loss: 0.05961000241299785
+epoch 48 | val_loss: 0.34548345683277515
+epoch 48 | val_dsc: 0.7994734737299302
+epoch 49 | loss: 0.056355057964249264
+epoch 49 | val_loss: 0.20104333110477612
+epoch 49 | val_dsc: 0.8271989187474553
+epoch 50 | loss: 0.05586192193170073
+epoch 50 | val_loss: 0.3137509295905846
+epoch 50 | val_dsc: 0.824298667361511
+epoch 51 | loss: 0.054812010160829656
+epoch 51 | val_loss: 0.2717962472335152
+epoch 51 | val_dsc: 0.8103242008402163
+
+[Run _r4] Best validation mean DSC: 0.836331
+main.py:334: UserWarning: ./result/TinyRecUNet_20251122_120454/result_img/test_r4\TCGA_DU_8167_19970402-33.png is a low contrast image
+  imsave(os.path.join(out_dir, filename), image)
+main.py:334: UserWarning: ./result/TinyRecUNet_20251122_120454/result_img/test_r4\TCGA_DU_A5TR_19970726-34.png is a low contrast image
+  imsave(os.path.join(out_dir, filename), image)
+main.py:334: UserWarning: ./result/TinyRecUNet_20251122_120454/result_img/test_r4\TCGA_DU_A5TR_19970726-35.png is a low contrast image
+  imsave(os.path.join(out_dir, filename), image)
+main.py:334: UserWarning: ./result/TinyRecUNet_20251122_120454/result_img/test_r4\TCGA_DU_A5TU_19980312-20.png is a low contrast image
+  imsave(os.path.join(out_dir, filename), image)
+
+Saved metrics summary to ./result/TinyRecUNet_20251122_120454/metrics_summary_r4.json
+Total elapsed time: 4550.17 seconds

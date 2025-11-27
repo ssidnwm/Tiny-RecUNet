@@ -1,0 +1,12 @@
+{"time":"2025-11-25T23:18:55.0845231+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-25T23:18:55.3992352+09:00","level":"INFO","msg":"stream: created new stream","id":"hehypptc"}
+{"time":"2025-11-25T23:18:55.3995662+09:00","level":"INFO","msg":"handler: started","stream_id":"hehypptc"}
+{"time":"2025-11-25T23:18:55.4054695+09:00","level":"INFO","msg":"stream: started","id":"hehypptc"}
+{"time":"2025-11-25T23:18:55.4054695+09:00","level":"INFO","msg":"writer: started","stream_id":"hehypptc"}
+{"time":"2025-11-25T23:18:55.4054695+09:00","level":"INFO","msg":"sender: started","stream_id":"hehypptc"}
+{"time":"2025-11-26T00:23:32.1334469+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-26T00:23:32.4990094+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-26T00:23:32.5064277+09:00","level":"INFO","msg":"stream: closing","id":"hehypptc"}
+{"time":"2025-11-26T00:23:32.5064277+09:00","level":"INFO","msg":"handler: closed","stream_id":"hehypptc"}
+{"time":"2025-11-26T00:23:32.5064277+09:00","level":"INFO","msg":"sender: closed","stream_id":"hehypptc"}
+{"time":"2025-11-26T00:23:32.5064277+09:00","level":"INFO","msg":"stream: closed","id":"hehypptc"}

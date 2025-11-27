@@ -5,6 +5,20 @@ from .resnet_encoder import ResNetEncoder
 from .recursive_module import RecursiveReasoningModule
 import torch.nn.functional as F
 
+def _parse_tuple_arg(arg):
+    """하이퍼파라미터 튜닝을 위해 '256,128,64,16' 같은 문자열을 (256, 128, 64, 16) 튜플로 변환합니다."""
+    if isinstance(arg, str):
+        if arg.lower() == "none":
+            return None
+        try:
+            return tuple(map(int, arg.split(',')))
+        except ValueError:
+            # 이 에러는 튜닝 스페이스에 잘못된 값이 있을 때 발생합니다.
+            raise ValueError(f"인자 파싱 오류: {arg}는 정수 목록 또는 'None'이어야 합니다.")
+    return arg
+
+
+
 class CNNEncoder(ResNetEncoder):
     """Wrapper alias for backward compatibility; now uses local ResNetEncoder."""
     def __init__(self, name: str = "resnet34", pretrained: bool = False, in_channels: int = 3):
@@ -98,6 +112,12 @@ class TinyRecUNet(nn.Module):
     ):
         super().__init__()
 
+        # --- ⬇️ 새롭게 추가된 부분: 문자열 인자 변환 ⬇️ ---
+        decoder_channels = _parse_tuple_arg(decoder_channels)
+        patch_grid = _parse_tuple_arg(patch_grid)
+        # --- ⬆️ 추가된 부분 끝 ⬆️ ---
+        
+        
         self.encoder = CNNEncoder(name=backbone, pretrained=pretrained_backbone, in_channels=in_channels)
         # 1. 인코더의 채널 정보를 가져옵니다
         #    (c16, c8, c4 채널 크기를 self.encoder.channels에서 가져옴)

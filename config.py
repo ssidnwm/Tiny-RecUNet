@@ -1,7 +1,16 @@
 import datetime
 
-model_name = "tinyrecunet"
+hyperparameter_tuning = True
+# Random search configuration 
+tuning_trials = 10
+
+model_name = "TransUnet"
 exp_name = model_name + "_" + datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
+# Weights & Biases
+wandb_project = "AICONV_FINAL_20"  
+wandb_entity = "TRMUNet"   
+wandb_tags = [model_name]          
 
 batch_size = 16
 epochs = 50
@@ -12,11 +21,17 @@ image_size = 224
 aug_scale = 0.05
 aug_angle = 15
 
+# dataset split controls (single global seed for deterministic splits & randomness)
+val_count = 20
+test_count = 20
+global_seed = 42  # replaces separate val_seed/test_seed
+
+# (Test set always evaluated after training; flags removed for simplicity)
+
 model_args = {
     "UNet": {
         "in_channels": 3,
         "out_channels": 1,
-
     },
     "TransUnet": {
         "in_channels": 3,
@@ -33,22 +48,107 @@ model_args = {
         "decoder_channels": (256, 128, 64, 16),
         "head_channels": 512,
     },
-    "tinyrecunet": {
-        "img_size": image_size,
-        "embed_dim": 256,
-        # "depth" 대신 TRM 파라미터 사용
-        # recursive_steps 대신 H_cycles 사용
-        #"recursive_steps": 6,      # ⬅️ 'depth' 대신 사용
-        #"num_recursive_layers": 2, # ⬅️ 'depth' 대신 사용
-        # --- (새 이중 루프 파라미터 추가) ---
-        "H_cycles": 4,  # (성능 보면서 튜닝 필요)
-        "L_cycles": 3,  # (튜닝 필요)
-        "L_layers": 1,  # (튜닝 필요)
-        "H_layers": 1,  # (튜닝 필요)
-        "num_heads": 8,
-        "mlp_ratio": 4.0,
-        "backbone": "resnet34",
+    "SwinUnet": {
         "in_channels": 3,
         "out_channels": 1,
+        "patch_size": 4,
+        "embed_dim": 96,
+        "depths": [2, 2, 6, 2],              # encoder stage depths
+        "decoder_depths": [2, 2, 6, 2],      # coupled to depths; tuning only 'depths'
+        "num_heads": [3, 6, 12, 24],
+        "window_size": 7,
+        "mlp_ratio": 4.0,
+        "qkv_bias": True,
+        "qk_scale": None,
+        "ape": False,
+        "patch_norm": True,
+        "final_upsample": "expand_first",
+        # explicit defaults for advanced regularization (tunable)
+        "drop_rate": 0.0,
+        "attn_drop_rate": 0.0,
+        "drop_path_rate": 0.1,
+    }, 
+    "TinyRecUNet": {
+        "in_channels": 3,
+        "out_channels": 1,
+        "img_size": 224,
+        "backbone": "resnet34",
+        "pretrained_backbone": False,
+        "embed_dim": 256,
+        "num_heads": 8,
+        "mlp_ratio": 4.0,
+        "patch_grid": None,          # e.g., (14,14) for 224x224; None = full grid (H/16, W/16)
+        "embed_dropout": 0.1,        # e.g., 0.1 for embedding dropout like the paper
+        "decoder_channels": (256, 128, 64, 16),
+        "head_channels": 512,
+        "H_cycles": 4, 
+        "L_cycles": 3,
+        "L_layers": 1,
+        "H_layers": 1,
     },
+}
+
+
+sweep_space = {
+    # Global training hyperparameters can repeat in each model section if desired
+    "TransUnet": {
+        # Continuous ranges (random strategy only): lr log-uniform, aug_scale uniform, aug_angle int uniform, embed_dropout uniform
+        "lr": {"log_uniform": [1e-5, 1e-3]},
+        "batch_size": {"values": [8, 16]},  # discrete
+        "embed_dim": {"values": [128, 256]},
+        "depth": {"values": [4, 6]},
+        "num_heads": {"values": [4, 8]},
+        "embed_dropout": {"uniform": [0.0, 0.3]},
+        "decoder_channels": {"values": ["256,128,64,16", "512,256,128,32"]},
+        "head_channels": {"values": [512, 256]},
+        "patch_grid": {"values": ["None", "14,14"]},
+    },
+    "SwinUnet": {
+        "lr": {"log_uniform": [5e-5, 5e-4]},
+        "batch_size": {"values": [8, 16]},
+        "embed_dim": {"values": [96, 128]},
+        "patch_size": {"values": [4, 7]},
+        "depths": {"values": ["2,2,6,2", "2,2,4,2"]},  # decoder_depths mirrors this
+        # dropout-related tunables
+        "drop_rate": {"uniform": [0.0, 0.2]},
+        "attn_drop_rate": {"uniform": [0.0, 0.2]},
+        "drop_path_rate": {"uniform": [0.0, 0.3]},
+    },
+    # UNet (example minimal tuning)
+    "UNet": {
+        "lr": {"log_uniform": [1e-5, 1e-3]},
+        "batch_size": {"values": [8, 16]},
+    },
+    "TinyRecUNet": { #  이 새로운 항목을 추가합니다.
+        # TransUnet에서 그대로 가져온 항목
+        "lr": {"log_uniform": [1e-5, 1e-3]},
+        "batch_size": {"values": [4, 8, 16]},
+        "embed_dim": {"values": [128, 256]},
+        # "depth" 대신 재귀 파라미터를 튜닝합니다.
+        "num_heads": {"values": [4, 8]},
+        "embed_dropout": {"uniform": [0.0, 0.3]},       
+        "decoder_channels": {"values": ["256,128,64,16", "512,256,128,32"]},
+        "head_channels": {"values": [512, 256]},
+        "patch_grid": {"values": ["None", "14,14", "7,7"]},
+
+        #  재귀 관련 하이퍼파라미터 튜닝 추가 
+        "H_cycles": {"values": [3, 4, 5, 6]},
+        "L_cycles": {"values": [2, 3]},
+        "L_layers": {"values": [1, 2]},
+        "H_layers": {"values": [1, 2]},
+    },
+}
+
+# SwinUnet: valid coupling between embed_dim and num_heads for attention divisibility per stage
+# The sampler uses this mapping to pick num_heads given embed_dim; we don't tune num_heads independently.
+swin_valid_heads = {
+    96:  "3,6,12,24",
+    128: "2,4,8,16",
+}
+
+# SwinUnet: valid window sizes conditioned on patch_size to reduce padding and keep windows aligned
+# Keys are patch_size, values are lists of permissible window_size values
+swin_valid_window = {
+    4: [7],       # 56x56 initial grid -> 7x7 windows tile cleanly (8 windows per side)
+    7: [4, 8],    # 32x32 grid -> 4 or 8 both divide; 4 gives more local focus, 8 fewer windows
 }

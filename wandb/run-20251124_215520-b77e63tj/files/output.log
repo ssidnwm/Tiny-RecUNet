@@ -1,0 +1,25 @@
+reading train images...
+preprocessing train volumes...
+cropping train volumes...
+padding train volumes...
+resizing train volumes...
+Traceback (most recent call last):
+  File "main.py", line 467, in <module>
+    train_validate(run_overrides=overrides, run_tag=tag)
+  File "main.py", line 83, in train_validate
+    loader_train, loader_valid, loader_test = data_loaders(local_batch_size, workers, image_size, local_aug_scale, local_aug_angle)
+  File "C:\Users\82109\Desktop\벼리\7학기\ai융합과 응용\Tiny-RecUnet\Tiny-RecUNet\dataset.py", line 170, in data_loaders
+    dataset_train, dataset_valid, dataset_test = datasets("./lgg-mri-segmentation/kaggle_3m", image_size, aug_scale, aug_angle)
+  File "C:\Users\82109\Desktop\벼리\7학기\ai융합과 응용\Tiny-RecUnet\Tiny-RecUNet\dataset.py", line 200, in datasets
+    train = BrainSegmentationDataset(
+  File "C:\Users\82109\Desktop\벼리\7학기\ai융합과 응용\Tiny-RecUnet\Tiny-RecUNet\dataset.py", line 100, in __init__
+    self.volumes = [resize_sample(v, size=image_size) for v in self.volumes]
+  File "C:\Users\82109\Desktop\벼리\7학기\ai융합과 응용\Tiny-RecUnet\Tiny-RecUNet\dataset.py", line 100, in <listcomp>
+    self.volumes = [resize_sample(v, size=image_size) for v in self.volumes]
+  File "C:\Users\82109\Desktop\벼리\7학기\ai융합과 응용\Tiny-RecUnet\Tiny-RecUNet\dataset.py", line 277, in resize_sample
+    volume = resize(
+  File "C:\ProgramData\anaconda3\envs\trm-unet\lib\site-packages\skimage\transform\_warps.py", line 186, in resize
+    out = ndi.zoom(image, zoom_factors, order=order, mode=ndi_mode,
+  File "C:\ProgramData\anaconda3\envs\trm-unet\lib\site-packages\scipy\ndimage\_interpolation.py", line 816, in zoom
+    _nd_image.zoom_shift(filtered, zoom, None, output, order, mode, cval, npad,
+KeyboardInterrupt
